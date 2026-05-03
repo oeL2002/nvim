@@ -527,6 +527,15 @@ require('lazy').setup({
 
         stylua = {}, -- Used to format Lua code
 
+        -- LTeX+ for spell/grammar checking in markdown, latex, gitcommit, etc.
+        ltex_plus = {
+          settings = {
+            ltex = {
+              language = 'en-US',
+            },
+          },
+        },
+
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
           on_init = function(client)
@@ -850,6 +859,16 @@ require('lazy').setup({
         end,
       })
     end,
+  },
+
+  { -- Quarto support: filetype detection for .qmd, embedded-language LSP via otter.nvim
+    'quarto-dev/quarto-nvim',
+    ft = { 'quarto' },
+    dependencies = {
+      'jmbuhr/otter.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {},
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
